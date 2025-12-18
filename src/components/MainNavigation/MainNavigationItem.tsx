@@ -11,7 +11,7 @@ export default function MainNavigationItem({ label, children, to, onClick }: Mai
   const MainNavStyles = 'flex py-2 px-4 text-gray-200 hover:text-white hover:cursor-pointer hover:bg-gray-900';
 
   return (
-    <li>
+    <li className="group relative text-nowrap">
       {to 
         ? <Link to={to} className={MainNavStyles}>{label}</Link>
         : <a onClick={onClick} className={`${MainNavStyles} bg-transparent border-0`}>{label}</a>
