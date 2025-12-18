@@ -43,7 +43,6 @@ function Home() {
         <button
           onClick={() => {
             setPage((old) => Math.max(old - 1, 0))
-            console.log('Previous page clicked')
           }}
           disabled={page === 0}
         >
@@ -53,7 +52,6 @@ function Home() {
           onClick={() => {
             if (!isPlaceholderData) {
               setPage((old) => old + 1)
-              console.log('Next page clicked')
             }
           }}
           // Disable the Next Page button until we know a next page is available
