@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import  Pagination from '../components/Pagination/Pagination'
 import { type Todo } from '../types/todo';
 
 function Home() {
@@ -27,26 +28,8 @@ function Home() {
             <li key={u.id} className="bg-black rounded-sm text-white py-2 px-4 mb-2">{u.title}</li>
           ))}
         </ul>
-        <span>Current Page: {page + 1}</span>
-        <button
-          onClick={() => {
-            setPage((old) => Math.max(old - 1, 0))
-          }}
-          disabled={page === 0}
-        >
-          Previous Page
-        </button>
-        <button
-          onClick={() => {
-            if (!isPlaceholderData) {
-              setPage((old) => old + 1)
-            }
-          }}
-          // Disable the Next Page button until we know a next page is available
-          disabled={isPlaceholderData || !data || data.length < 10}
-        >
-          Next Page
-        </button>
+
+        <Pagination page={page} setPage={setPage} isPlaceholderData={isPlaceholderData} data={data} />
       </div>}
     </>
   )
