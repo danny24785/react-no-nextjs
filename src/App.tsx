@@ -1,30 +1,28 @@
-import { useState } from 'react'
+import { Routes, Route } from "react-router-dom";
+import Contact from './pages/Contact';
+import Home from './pages/Home';
+import { Link } from 'react-router-dom';
+import { routes } from './routes';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div className='flex'>
-        <ul className='flex gap-4'>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-        </ul>
+      <div className="flex flex-col">
+        <div className='flex'>
+          <ul className='flex gap-4'>
+            <li><Link to={routes.home}>Home</Link></li>
+            <li><Link to={routes.about}>About</Link></li>
+            <li><Link to={routes.contact}>Contact</Link></li>
+          </ul>
+        </div>
+        
+        <Routes>
+          <Route path={routes.home} element={<Home />} />
+          <Route path={routes.about} element={<h1>About page</h1>} />
+          <Route path={routes.contact} element={<Contact />} />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
