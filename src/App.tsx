@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Contact from './pages/Contact';
 import Home from './pages/Home';
-import { Link } from 'react-router-dom';
+import MainNavigation from './components/MainNavigation/MainNavigation';
+import AboutDashboard from './pages/AboutDashboard';
 import { routes } from './routes';
 import './App.css'
 
@@ -9,17 +10,15 @@ function App() {
   return (
     <>
       <div className="flex flex-col">
-        <div className='flex'>
-          <ul className='flex gap-4'>
-            <li><Link to={routes.home}>Home</Link></li>
-            <li><Link to={routes.about}>About</Link></li>
-            <li><Link to={routes.contact}>Contact</Link></li>
-          </ul>
-        </div>
+        <MainNavigation />
         
         <Routes>
           <Route path={routes.home} element={<Home />} />
-          <Route path={routes.about} element={<h1>About page</h1>} />
+          <Route path={routes.about} element={<AboutDashboard />}>
+            <Route index element={<p>sub page 1</p>} />
+            <Route path={routes.subPage2} element={<p>sub page 2</p>} />
+            <Route path={routes.subPage3} element={<p>sub page 3</p>} />
+          </Route>
           <Route path={routes.contact} element={<Contact />} />
         </Routes>
       </div>
