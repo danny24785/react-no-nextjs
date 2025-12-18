@@ -1,3 +1,4 @@
+import Button from '../Button/Button';
 import { type Todo } from '../../types/todo';
 
 type PaginationProps = {
@@ -9,26 +10,24 @@ type PaginationProps = {
 
 export default function Pagination({ page, setPage, isPlaceholderData, data }: PaginationProps) {
   return (
-    <>
-      <span>Current Page: {page + 1}</span>
-      <button
+    <div className='flex gap-4 items-center mt-4'>
+      <Button
         onClick={() => {
           setPage((old) => Math.max(old - 1, 0))
         }}
-        disabled={page === 0}
-      >
-        Previous Page
-      </button>
-      <button
+        label='Previous Page'
+        disabled={page === 0} />
+
+      <span>Current Page: {page + 1}</span>  
+
+      <Button
+        label='Next Page'
         onClick={() => {
           if (!isPlaceholderData) {
             setPage((old) => old + 1)
           }
         }}
-        disabled={isPlaceholderData || !data || data.length < 10}
-      >
-        Next Page
-      </button>
-    </>
+        disabled={isPlaceholderData || !data || data.length < 10} />
+    </div>
   );
 }
