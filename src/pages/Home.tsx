@@ -1,13 +1,6 @@
 import { useState } from 'react'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 
-type Todo = {
-  id: number;
-  title: string;
-  body: string;
-  userId: number;
-}
-
 function Home() {
   const [count, setCount] = useState(0)
   const [page, setPage] = useState(0)
