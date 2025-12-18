@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { type Todo } from '../types/todo';
 
 function Home() {
   const [count, setCount] = useState(0)
