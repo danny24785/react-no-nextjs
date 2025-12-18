@@ -9,14 +9,13 @@ function MainNavigation() {
     <div className='flex'>
       <ul className='flex gap-4'>
         <MainNavigationItem to={routes.home} label="Home" />
-        <li>
-          <MainNavigationItem onClick={() => setIsAboutMenuOpen(!isAboutMenuOpen)} label="About" />
-          {isAboutMenuOpen && <ul className="">
+        <MainNavigationItem onClick={() => setIsAboutMenuOpen(!isAboutMenuOpen)} label="About">
+          {isAboutMenuOpen && <ul className="absolute bg-gray-500">
             <MainNavigationItem to={routes.about} label="Sub Page 1" />
             <MainNavigationItem to={routes.subPage2} label="Sub Page 2" />
             <MainNavigationItem to={routes.subPage3} label="Sub Page 3" />
           </ul>}
-        </li>
+        </MainNavigationItem>
         <MainNavigationItem to={routes.contact} label="Contact" />
       </ul>
     </div>
