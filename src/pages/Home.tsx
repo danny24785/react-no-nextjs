@@ -3,7 +3,6 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { type Todo } from '../types/todo';
 
 function Home() {
-  const [count, setCount] = useState(0)
   const [page, setPage] = useState(0)
 
   const fetchProjects = (page = 0) =>
@@ -19,15 +18,10 @@ function Home() {
   return (
     <>
       <h1>Home page</h1>
-      <h1>Vite + React</h1>
-      <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-          </button>
-      </div>
       {data && <div className="card text-left">
         {isLoading && <p>Loading...</p>}
         {error && <p>Error loading data</p>}
+
         <ul>
           {data.map((u: Todo) => (
             <li key={u.id} className="bg-black rounded-sm text-white py-2 px-4 mb-2">{u.title}</li>
