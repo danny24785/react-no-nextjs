@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import  Pagination from '../components/Pagination/Pagination'
-import { type Todo } from '../types/todo';
+import { type Post } from '../types/todo';
 import { usePosts } from '../hooks/usePosts';
 
 function Home() {
