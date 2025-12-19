@@ -16,8 +16,8 @@ function Home() {
         {error && <p>Error loading data</p>}
 
         <ul>
-          {data.map((u: Todo) => (
-            <li key={u.id} className="bg-black rounded-sm text-white py-2 px-4 mb-2">{u.title}</li>
+          {data.map((post: Post) => (
+            <li key={post.id} className="bg-black rounded-sm text-white py-2 px-4 mb-2">{post.title}</li>
           ))}
         </ul>
 
