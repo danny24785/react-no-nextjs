@@ -1,20 +1,12 @@
 import { useState } from 'react'
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import  Pagination from '../components/Pagination/Pagination'
 import { type Todo } from '../types/todo';
+import { usePosts } from '../hooks/usePosts';
 
 function Home() {
   const [page, setPage] = useState(0)
-
-  const fetchProjects = (page = 0) =>
-    fetch(`https://jsonplaceholder.typicode.com/posts/?_page=${page + 1}&_limit=10`).then((res) => res.json())
-
-
-  const { data, isLoading, error, isPlaceholderData } = useQuery({
-    queryKey: ['todo', page],
-    queryFn: () => fetchProjects(page),
-    placeholderData: keepPreviousData ,
-  })
+  const pageLimit = 10
+  const { data, isLoading, error, isPlaceholderData } = usePosts(page, pageLimit);
 
   return (
     <>
@@ -29,7 +21,7 @@ function Home() {
           ))}
         </ul>
 
-        <Pagination page={page} setPage={setPage} isPlaceholderData={isPlaceholderData} data={data} />
+        <Pagination page={page} pageLimit={pageLimit} setPage={setPage} isPlaceholderData={isPlaceholderData} dataLength={data.length} />
       </div>}
     </>
   )

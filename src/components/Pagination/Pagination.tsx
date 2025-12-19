@@ -1,14 +1,14 @@
 import Button from '../Button/Button';
-import { type Todo } from '../../types/todo';
 
 type PaginationProps = {
   page: number;
-  setPage: (page: number | ((old: number) => number)) => void;
   isPlaceholderData: boolean;
-  data: Todo[];
+  dataLength: number;
+  pageLimit: number;
+  setPage: (page: number | ((old: number) => number)) => void;
 };
 
-export default function Pagination({ page, setPage, isPlaceholderData, data }: PaginationProps) {
+export default function Pagination({ page, isPlaceholderData, dataLength, pageLimit, setPage }: PaginationProps) {
   return (
     <div className='flex gap-4 items-center mt-4'>
       <Button
@@ -27,7 +27,7 @@ export default function Pagination({ page, setPage, isPlaceholderData, data }: P
             setPage((old) => old + 1)
           }
         }}
-        disabled={isPlaceholderData || !data || data.length < 10} />
+        disabled={isPlaceholderData || dataLength < pageLimit} />
     </div>
   );
 }
